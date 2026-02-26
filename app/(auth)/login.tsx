@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { ButtonApp } from '../../src/components/ui/ButtonApp';
 import { Link, useRouter } from 'expo-router';
 import { Input } from '../../src/components/ui/Input';
@@ -27,6 +27,7 @@ export default function LoginScreen() {
         />
 
         <ButtonApp title='Join' onPress={() => router.navigate("/(tabs)")}/>
+
       </View>
 
       <Link
