@@ -6,7 +6,7 @@ interface ButtonProps {
   variant?: 'primary' | 'outline';
 }
 
-export function Button({ title, onPress, variant = 'primary' }: ButtonProps) {
+export function ButtonApp({ title, onPress, variant = 'primary' }: ButtonProps) {
   return (
     <Pressable
       style={({ pressed }) => [

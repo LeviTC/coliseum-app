@@ -3,13 +3,13 @@ import { ButtonApp } from '../../src/components/ui/ButtonApp';
 import { Link, useRouter } from 'expo-router';
 import { Input } from '../../src/components/ui/Input';
 
-export default function LoginScreen() {
+export default function RegisterScreen() {
     const router = useRouter();
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Coliseum</Text>
-      <Text style={styles.subtitle}>Sign in</Text>
+      <Text style={styles.subtitle}>Sign up</Text>
 
       <View
         style={{gap: 20}}
@@ -26,18 +26,26 @@ export default function LoginScreen() {
           secureTextEntry
         />
 
-        <ButtonApp title='Join' onPress={() => router.navigate("/(tabs)")}/>
+        <Input
+          placeholder="Confirm password"
+          accessibilityLabel='password'
+          secureTextEntry
+        />
+
+        <ButtonApp title="Sign up" onPress={() => router.navigate("/(tabs)")} />
       </View>
 
       <Link
-        href="/register"
+        href="/login"
         style={{
           marginTop: 40
         }}
         children={
           <Text style={styles.register}>
-            Don't have an account?{' '}
-            <Text style={styles.registerHighlight}>Sign up</Text>
+            Already have an account?{" "}
+            <Text style={styles.loginHighlight}>
+                Sign in
+            </Text>
           </Text>
         }
       >
@@ -72,7 +80,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 14,
   },
-  registerHighlight: {
+  loginHighlight: {
     color: '#00FF87',
     fontWeight: 'bold',
   },
