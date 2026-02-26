@@ -27,6 +27,7 @@ export default function LoginScreen() {
         />
 
         <ButtonApp title='Join' onPress={() => router.navigate("/(tabs)")}/>
+
       </View>
 
       <Link

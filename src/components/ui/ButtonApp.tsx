@@ -1,49 +1,34 @@
-import { Pressable, Text, StyleSheet } from 'react-native';
+import { Pressable, Text, PressableProps } from 'react-native';
 
-interface ButtonProps {
+interface ButtonProps extends PressableProps{
   title: string;
-  onPress?: () => void;
   variant?: 'primary' | 'outline';
+  className?: string;
 }
 
-export function ButtonApp({ title, onPress, variant = 'primary' }: ButtonProps) {
+export function ButtonApp({
+  title,
+  onPress,
+  variant = 'primary',
+  className,
+}: ButtonProps) {
+  const baseButton = 'rounded-lg px-4 py-4 items-center active:opacity-70';
+  const variantButton =
+    variant === 'outline'
+      ? 'bg-transparent border border-[#00FF87]'
+      : 'bg-[#00FF87]';
+
+  const textClass =
+    variant === 'outline'
+      ? 'text-[#00FF87] font-bold text-base'
+      : 'text-black font-bold text-base';
+
   return (
     <Pressable
-      style={({ pressed }) => [
-        styles.button,
-        variant === 'outline' && styles.outline,
-        pressed && styles.pressed,
-      ]}
+      className={`${baseButton} ${variantButton} ${className ?? ''}`}
       onPress={onPress}
     >
-      <Text style={[styles.text, variant === 'outline' && styles.outlineText]}>
-        {title}
-      </Text>
+      <Text className={textClass}>{title}</Text>
     </Pressable>
   );
 }
-
-const styles = StyleSheet.create({
-  button: {
-    backgroundColor: '#00FF87',
-    borderRadius: 8,
-    padding: 16,
-    alignItems: 'center',
-  },
-  outline: {
-    backgroundColor: 'transparent',
-    borderWidth: 1,
-    borderColor: '#00FF87',
-  },
-  pressed: {
-    opacity: 0.7,
-  },
-  text: {
-    color: '#000',
-    fontWeight: 'bold',
-    fontSize: 16,
-  },
-  outlineText: {
-    color: '#00FF87',
-  },
-});
